@@ -1,3 +1,35 @@
+<?php
+session_start();
+include ("conn.php");
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
+        $student_number = $_POST['id_number'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        if(!empty($username)&& !empty($password))
+        {
+
+            $query = "SELECT * FROM users WHERE username = '$username' limit 1";
+            $check_query = mysqli_query($conn,$query);
+
+            if($result){
+                if($check_query && mysqli_num_rows($check_query)>0)
+                {
+                    $content = mysqli_fetch_assoc($result);
+                    if($content['password'] === $password){
+                    header("Location: index.php");
+                    die;
+                }
+            }
+        }
+        echo "<script>alert('Invalid information.');</script>";
+        echo "<script>document.location='login.php';</script>";
+        }else{
+            echo "Invalid information.";
+        }
+
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
