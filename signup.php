@@ -37,7 +37,7 @@ include ("conn.php");
 <head>
 	<meta charset="UTF-8">
 	<title>Signup Page</title>
-	<link rel="stylesheet" href="signup.css">
+	<link rel="stylesheet" href="css/signup.css">
 </head>
 <body>
 	<div class="signup-container">

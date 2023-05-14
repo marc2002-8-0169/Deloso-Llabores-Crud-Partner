@@ -2,7 +2,7 @@
 session_start();
 include ("conn.php");
     if($_SERVER['REQUEST_METHOD'] == "POST"){
-        $student_number = $_POST['id_number'];
+
         $username = $_POST['username'];
         $password = $_POST['password'];
 
@@ -12,20 +12,20 @@ include ("conn.php");
             $query = "SELECT * FROM users WHERE username = '$username' limit 1";
             $check_query = mysqli_query($conn,$query);
 
-            if($result){
+            if($check_query){
                 if($check_query && mysqli_num_rows($check_query)>0)
                 {
-                    $content = mysqli_fetch_assoc($result);
-                    if($content['password'] === $password){
-                    header("Location: index.php");
-                    die;
+                    $content = mysqli_fetch_assoc($check_query);
+                        if($content['password'] === $password){
+                        $_SESSION['user_id'] = $user_data['user_id'];
+                        header("Location: index.php");
+                        die;
                 }
             }
         }
-        echo "<script>alert('Invalid information.');</script>";
-        echo "<script>document.location='login.php';</script>";
+            echo "<script>alert('Invalid information.');</script>";
         }else{
-            echo "Invalid information.";
+            echo "<script>alert('Invalid information.');</script>";
         }
 
     }
@@ -35,7 +35,7 @@ include ("conn.php");
 <head>
 	<meta charset="UTF-8">
 	<title>Login Page</title>
-	<link rel="stylesheet" href="login.css">
+	<link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 	<div class="login-container">
