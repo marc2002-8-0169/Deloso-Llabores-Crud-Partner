@@ -1,6 +1,8 @@
 body {
 	font-family: Arial, sans-serif;
-    background-color: #83e6da;
+	background-image: url("psu.png");
+    background-color: #3b3a47;
+	background-size:contain;
 }
 
 .signup-container {
@@ -41,7 +43,7 @@ input[type="text"], input[type="password"] {
 }
 
 button {
-	background-color: #4CAF50;
+	background-color: #1345d0;
 	color: white;
 	border: none;
 	border-radius: 5px;
@@ -51,11 +53,11 @@ button {
 }
 
 button:hover {
-	background-color: #3E8E41;
+	background-color: #365fd1;
 }
 
 form .new p {
-    background: #42b72a;
+    background: black;
     color: white;
     padding: 17px 20px;
     border-radius: 7px;

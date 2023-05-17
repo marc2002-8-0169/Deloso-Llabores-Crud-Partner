@@ -1,6 +1,7 @@
 body {
 	font-family: Arial, sans-serif;
-	background-color: #83e6da;
+	background-image: url("psu.jpg");
+	background-color: #3b3a47;
 }
 
 .login-container {
@@ -39,7 +40,7 @@ input[type="text"], input[type="password"] {
 }
 
 button {
-	background-color: #4CAF50;
+	background-color: #1345d0;
 	color: white;
 	border: none;
 	border-radius: 5px;
@@ -49,5 +50,5 @@ button {
 }
 
 button:hover {
-	background-color: #3E8E41;
+	background-color: #365fd1;
 }

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ("connection/conn.php"); 
+include ("sql/conn.php"); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +9,7 @@ include ("connection/conn.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMS</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 </head>
 <body>
@@ -27,7 +27,7 @@ include ("connection/conn.php");
             </div>
         </div>
 <div class="site-con">
-    <div class="header">Assigntment Tab: Add Assignment</div>
+    <div class="header">Assignment Management System</div>
 </div>
 </body>
 </html>

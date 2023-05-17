@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ("connection/conn.php"); 
+include ("sql/conn.php"); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +27,7 @@ include ("connection/conn.php");
             </div>
         </div>
 <div class="site-con">
-    <div class="header">Assignment Management System</div>
+    <div class="header">Teachers Tab: Add Teachers</div>
 </div>
 </body>
 </html>

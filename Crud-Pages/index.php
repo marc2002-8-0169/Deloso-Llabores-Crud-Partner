@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ("conn.php"); 
+include ("sql/conn.php"); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,13 +17,13 @@ include ("conn.php");
         <div class="verbar">
             <h2>AMS</h2>
             <ul>
-                <li><a href="pages/home.php">Home</a></li>
-                <li><a href="pages/add.php">Assignments</a></li>
-                <li><a href="pages/teacher.php">Teachers</a></li>
-                <li><a href="pages/subject.php">Subject</a></li>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="add.php">Assignments</a></li>
+                <li><a href="teacher.php">Teachers</a></li>
+                <li><a href="subject.php">Subject</a></li>
             </ul>
             <div class="logout">
-                <a href="login.php">Logout</a>
+                <a href="Crud-Pages/login.php">Logout</a>
             </div>
         </div>
 <div class="site-con">
