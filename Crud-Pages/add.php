@@ -72,8 +72,6 @@ if (isset($_POST['add_assignment'])) {
     $instructor_last_name = $_POST['instructor_last_name'];
     $status_name = $_POST['status_name'];
 
-
-
     $subject_id = addSubject($subject_name);
 
     $instructor_id = addInstructor($instructor_first_name, $instructor_last_name);
