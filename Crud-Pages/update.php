@@ -15,11 +15,12 @@
         }
 
         form {
+            
             background: linear-gradient(to right, lightgreen, darkblue);
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 2px;
         }
-
+        
         label {
             display: block;
             margin-bottom: 10px;

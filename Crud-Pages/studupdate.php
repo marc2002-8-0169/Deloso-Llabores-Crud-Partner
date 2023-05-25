@@ -30,9 +30,8 @@
             margin-bottom: 10px;
         }
 
-        input[type="text"],
-        input[type="submit"] {
-            width: 100%;
+        input[type="text"]{
+            width: 97%;
             padding: 8px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
@@ -43,6 +42,11 @@
             background-color: #4CAF50;
             color: white;
             cursor: pointer;
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
 
         input[type="submit"]:hover {
