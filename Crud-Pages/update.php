@@ -164,7 +164,8 @@
         </select><br><br>
 
         <input type="submit" name="update_assignment" value="Update Assignment">
-    </form>
+    </form><br><br>
+    <a href="main.php"><button>Go to Main Page</button></a>
 
     <?php
     // Update Assignment form submission handling

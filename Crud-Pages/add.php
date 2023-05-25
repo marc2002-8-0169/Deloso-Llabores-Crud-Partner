@@ -150,7 +150,7 @@ if (isset($_POST['add_assignment'])) {
 <body>
     <!-- Add Assignment Form -->
     <h2>Add Assignment</h2>
-    <form method="POST" action="main.php">
+    <form method="POST" action="">
         <label for="assignment_name">Assignment Name:</label>
         <input type="text" name="assignment_name" required><br><br>
 
@@ -167,6 +167,7 @@ if (isset($_POST['add_assignment'])) {
         <input type="text" name="status_name" required><br><br>
 
         <input type="submit" name="add_assignment" value="Add Assignment">
-    </form>
+    </form><br><br>
+    <a href="main.php"><button>Go to Main Page</button></a>
 </body>
 </html>
