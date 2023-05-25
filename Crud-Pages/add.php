@@ -1,145 +1,174 @@
 <?php
-session_start();
-include ("sql/conn.php"); 
+require('db.php');
+
+// Function to add an assignment
+function addAssignment($assignment_name) {
+    global $conn;
+    
+    $stmt = $conn->prepare("INSERT INTO assignment (assignment_name) VALUES (?)");
+    $stmt->bind_param("s", $assignment_name);
+    
+    if ($stmt->execute()) {
+        echo "Assignment added successfully.";
+    } else {
+        echo "Error adding assignment: " . $stmt->error;
+    }
+}
+
+// Function to add a subject
+function addSubject($subject_name) {
+    global $conn;
+
+    $stmt = $conn->prepare("INSERT INTO subject (subject_name) VALUES (?)");
+    $stmt->bind_param("s", $subject_name);
+
+    if ($stmt->execute()) {
+        return $conn->insert_id;
+    } else {
+        echo "Error adding subject: " . $stmt->error;
+    }
+
+    $stmt->close();
+}
+
+// Function to add a new instructor
+function addInstructor($firstname, $lastname) {
+    global $conn;
+    
+    $stmt = $conn->prepare("INSERT INTO instructor (firstname, lastname) VALUES (?, ?)");
+    $stmt->bind_param("ss", $firstname, $lastname);
+
+    if ($stmt->execute()) {
+        return $conn->insert_id;
+    } else {
+        echo "Error adding instructor: " . $stmt->error;
+        return null;
+    }
+
+    $stmt->close();
+}
+
+// Function to add a status
+function addStatus($status_name) {
+    global $conn;
+
+    $stmt = $conn->prepare("INSERT INTO status (status_name) VALUES (?)");
+    $stmt->bind_param("s", $status_name);
+
+    if ($stmt->execute()) {
+        return $conn->insert_id;
+    } else {
+        echo "Error adding status: " . $stmt->error;
+    }
+
+    $stmt->close();
+}
+
+// Add Assignment form submission handling
+if (isset($_POST['add_assignment'])) {
+    $assignment_name = $_POST['assignment_name'];
+    $subject_name = $_POST['subject_name'];
+    $instructor_first_name = $_POST['instructor_first_name'];
+    $instructor_last_name = $_POST['instructor_last_name'];
+    $status_name = $_POST['status_name'];
+
+
+    
+    $subject_id = addSubject($subject_name);
+
+    $instructor_id = addInstructor($instructor_first_name, $instructor_last_name);
+    
+    $status_id = addStatus($status_name);
+       
+    $assignment_name = addAssignment($assignment_name);
+
+}
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMS</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-    <!-- table design -->
+    <title>Add Assignment</title>
     <style>
-    .container {
-      position: relative;
-      padding: 20px;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, purple, pink);
+            padding: 20px;
+        }
 
-    .crud-actions {
-      position: absolute;
-      top: 0;
-      right: 0;
-      margin: 20px;
-    }
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
 
-    .crud-table {
-      margin-top: 80px;
-    }
+        form {
+            background: linear-gradient(to right, #2AF598, #009EFD);
+            padding: 20px;
+            border-radius: 5px;
+        }
 
-    .crud-table th {
-      background-color: #f2f2f2;
-      text-align: center;
-    }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
 
-    .crud-table td {
-      text-align: center;
-    }
+        input[type="text"],
+        select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-    .action-buttons {
-      display: flex;
-      justify-content: center;
-    }
-  </style>
+        select {
+            height: 35px;
+        }
 
+        .name-field {
+            display: flex;
+        }
+
+        .name-field input[type="text"] {
+            flex: 1;
+            margin-right: 5px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: darkgreen;
+        }
+    </style>
 </head>
 <body>
-    <div class="main">
-        <div class="verbar">
-            <h2>AMS</h2>
-            <ul>
-                <li><a href="home.php">Home</a></li>
-                <li><a href="add.php">Assignments</a></li>
-                <li><a href="teachers.php">Teachers</a></li>
-                <li><a href="subject.php">Subject</a></li>
-            </ul>
-            <div class="logout">
-                <a href="login.php">Logout</a>
-            </div>
-        </div>
-<div class="site-con">
-    <div class="header">Assigntment Tab: Add Assignment</div>
-    <div class="container">
-    <div class="crud-actions">
-      <button class="btn btn-primary" data-toggle="modal" data-target="#createModal">Create</button>
-      <button class="btn btn-warning">Update</button>
-    </div>
+    <!-- Add Assignment Form -->
+    <h2>Add Assignment</h2>
+    <form method="POST" action="main.php">
+        <label for="assignment_name">Assignment Name:</label>
+        <input type="text" name="assignment_name" required><br><br>
 
-    <table class="table table-bordered crud-table">
-      <thead class="thead-light">
-        <tr>
-          <th>Assignment ID</th>
-          <th>Sub ID</th>
-          <th>Assignment Name</th>
-          <th>Subject Type</th>
-          <th>Instructor Name</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Add your table data rows here -->
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td class="action-buttons">
-            <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">Edit</button>
-            <button class="btn btn-danger btn-sm">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <!--Popup create table-->
-    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="createModalLabel">Create Assignment</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="subId">Sub ID</label>
-                <select class="form-control" id="subId">
-                  <option value="math">Math</option>
-                  <option value="science">Science</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="assignmentName">Assignment Name</label>
-                <input type="text" class="form-control" id="assignmentName">
-              </div>
-              <div class="form-group">
-                <label for="subjectType">Subject Type</label>
-                <input type="text" class="form-control" id="subjectType">
-              </div>
-              <div class="form-group">
-                <label for="instructorName">Instructor Name</label>
-                <input type="text" class="form-control" id="instructorName">
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary">Save</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        <label for="subject_name">Subject:</label>
+        <input type="text" name="subject_name" required><br><br>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  </div>
+        <label for="instructor_first_name">Instructor:</label>
+        <div class="name-field">
+            <input type="text" name="instructor_first_name" placeholder="First name" required>
+            <input type="text" name="instructor_last_name" placeholder="Last name" required>
+        </div><br><br>
 
-</div>
+        <label for="status_name">Status:</label>
+        <input type="text" name="status_name" required><br><br>
+
+        <input type="submit" name="add_assignment" value="Add Assignment">
+    </form>
 </body>
 </html>
