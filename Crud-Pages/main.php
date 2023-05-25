@@ -92,7 +92,7 @@ function viewAssignments() {
 </head>
 <body>
     <h1>Assignment Management System</h1>
-    <div class="logout" style="text-align: right">
+    <div class="logout" style="text-align: right" onclick="alert('Log out successfully.');">
         <a href="login.php" style="color:yellow;">Logout</a>
     </div><br>
     <div style='text-align: right';>
