@@ -135,5 +135,8 @@ function viewAssignments() {
     <?php
     viewAssignments();
     ?>
+    <div class="logout">
+        <a href="login.php" style="color:yellow;">Logout</a>
+    </div>
     </body>
 </html>
