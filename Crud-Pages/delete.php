@@ -50,11 +50,27 @@
 <body>
     <?php
     require('db.php');
+    
+    // Function to delete an assignment
+    function deleteAssignment($assignment_id) {
+        global $conn;
+        
+        $stmt = $conn->prepare("DELETE FROM assignment WHERE assignment_id = ?");
+        $stmt->bind_param("i", $assignment_id);
+        
+        if ($stmt->execute()) {
+            echo "Assignment deleted successfully.";
+        } else {
+            echo "Error deleting assignment: " . $stmt->error;
+        }
+        
+        $stmt->close();
+    }
     ?>
 
     <!-- Delete Assignment Form -->
     <h2>Delete Assignment</h2>
-    <form method="POST" action="">
+    <form method="POST" action="main.php">
         <label for="assignment_id">Assignment ID:</label>
         <input type="number" name="assignment_id" required><br><br>
 
