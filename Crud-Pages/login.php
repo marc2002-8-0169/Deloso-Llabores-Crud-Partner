@@ -18,7 +18,8 @@ include ("db.php");
                     $content = mysqli_fetch_assoc($check_query);
                         if($content['password'] === $password){
                         $_SESSION['user_id'] = $user_data['user_id'];
-                        header("Location: main.php");
+                        echo "<script>alert('You are now logged in.');</script>";
+                        echo "<script>document.location='main.php';</script>";
                         die;
                 }
             }

@@ -92,6 +92,9 @@ function viewAssignments() {
 </head>
 <body>
     <h1>Assignment Management System</h1>
+    <div class="logout" style="text-align: right">
+        <a href="login.php" style="color:yellow;">Logout</a>
+    </div><br>
     <div style='text-align: right';>
         <select name="assignment_name" onchange="location = this.value;">
         <option value="">Edit Table</option>
@@ -135,8 +138,6 @@ function viewAssignments() {
     <?php
     viewAssignments();
     ?>
-    <div class="logout">
-        <a href="login.php" style="color:yellow;">Logout</a>
-    </div>
+    
     </body>
 </html>
