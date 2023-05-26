@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2023 at 06:27 AM
+-- Generation Time: May 25, 2023 at 02:35 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -38,8 +38,7 @@ CREATE TABLE `assignment` (
 
 INSERT INTO `assignment` (`assignment_id`, `assignment_name`) VALUES
 (1, 'PHP CRUD'),
-(2, 'IAS Final Requirement'),
-(3, 'IAS Final Requirement');
+(2, 'IAS Final Requirement');
 
 -- --------------------------------------------------------
 
@@ -50,18 +49,16 @@ INSERT INTO `assignment` (`assignment_id`, `assignment_name`) VALUES
 CREATE TABLE `instructor` (
   `instructor_id` int(11) NOT NULL,
   `firstname` varchar(45) NOT NULL,
-  `lastname` varchar(45) NOT NULL,
-  `department` varchar(45) NOT NULL
+  `lastname` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `instructor`
 --
 
-INSERT INTO `instructor` (`instructor_id`, `firstname`, `lastname`, `department`) VALUES
-(1, 'Kristine', 'Martinez', ''),
-(2, 'Larry', 'Caduada Jr.', ''),
-(4, 'Larry', 'Caduada Jr.', '');
+INSERT INTO `instructor` (`instructor_id`, `firstname`, `lastname`) VALUES
+(1, 'Kristine', 'Martinez'),
+(2, 'Larry', 'Caduada Jr.');
 
 -- --------------------------------------------------------
 
@@ -71,7 +68,7 @@ INSERT INTO `instructor` (`instructor_id`, `firstname`, `lastname`, `department`
 
 CREATE TABLE `status` (
   `status_id` int(11) NOT NULL,
-  `status_name` enum('done','in progress') NOT NULL
+  `status_name` enum('in progress','done') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -80,8 +77,7 @@ CREATE TABLE `status` (
 
 INSERT INTO `status` (`status_id`, `status_name`) VALUES
 (1, 'in progress'),
-(2, 'done'),
-(3, 'done');
+(2, 'done');
 
 -- --------------------------------------------------------
 
@@ -116,8 +112,7 @@ CREATE TABLE `subject` (
 
 INSERT INTO `subject` (`subject_id`, `subject_name`) VALUES
 (1, 'Application Development'),
-(2, 'Information Assurance and Security'),
-(5, 'Information Assurance and Security');
+(2, 'Information Assurance and Security');
 
 --
 -- Indexes for dumped tables
@@ -161,25 +156,25 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `assignment`
 --
 ALTER TABLE `assignment`
-  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `instructor`
 --
 ALTER TABLE `instructor`
-  MODIFY `instructor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `instructor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
-  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
