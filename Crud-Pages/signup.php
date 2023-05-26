@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ("sql/conn.php");
+include ("db.php");
     function user_id($num){
         $ranText = "";
         
