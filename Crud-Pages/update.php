@@ -83,6 +83,7 @@
 
     <!-- Update Assignment Form -->
     <h2>Update Assignment</h2>
+    <a href="main.php"><button>Go to Main Page</button></a><br><br>
     <form method="POST" action="">
         <label for="assignment_id">Assignment No:</label>
         <input type="number" name="assignment_id" required><br><br>
@@ -122,7 +123,6 @@
 
         <input type="submit" name="update_assignment" value="Update Assignment">
     </form><br><br>
-    <a href="main.php"><button>Go to Main Page</button></a>
 
     <?php
     // Update Assignment form submission handling

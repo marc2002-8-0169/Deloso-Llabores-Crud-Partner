@@ -50,7 +50,7 @@
 <body>
     <?php
     require('db.php');
-    
+
     // Function to delete an assignment
     function deleteAssignment($assignment_id) {
         global $conn;
@@ -75,7 +75,8 @@
         <input type="number" name="assignment_id" required><br><br>
 
         <input type="submit" name="delete_assignment" value="Delete Assignment">
-    </form>
+    </form><br><br>
+    <a href="main.php"><button>Go to Main Page</button></a>
 
     <?php
     // Delete Assignment form submission handling
