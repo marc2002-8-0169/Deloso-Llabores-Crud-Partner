@@ -52,6 +52,11 @@
         input[type="submit"]:hover {
             background-color: #46A094;
         }
+        button{
+            tposition: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
     </style>
 </head>
 <body>
@@ -62,9 +67,11 @@
 
         <!-- Update Student Information Form -->
         <h2>Update Student Information</h2>
+        <a href="main.php"><button>Go to Main Page</button></a>
+        <a href="studinfo.php"><button>Go to Student Information</button></a>
         <form method="POST" action="">
-            <label for="student_id">Student ID:</label>
-            <input type="text" name="student_id" placeholder="20208564" required>
+            <label for="student_no">Student Number:</label>
+            <input type="text" name="student_no" placeholder="20208564" required>
 
             <label for="firstname">First Name:</label>
             <input type="text" name="firstname" required>
@@ -81,29 +88,43 @@
             <label for="contact">Contact:</label>
             <input type="text" name="contact" required>
 
-            <label for="course">Course:</label>
-            <input type="text" name="course" required>
+            <label for="program">Program:</label>
+            <input type="text" name="program" required>
 
             <input type="submit" name="update" value="Update">
         </form>
-
+        
         <?php
         // Handle form submission for updating student information
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $student_id = $_POST['student_id'];
+            $student_no = $_POST['student_no'];
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
             $gender = $_POST['gender'];
             $address = $_POST['address'];
             $contact = $_POST['contact'];
-            $course = $_POST['course'];
+            $program = $_POST['program'];
 
-            // Update the student information in the database
-            $updateSql = "UPDATE student SET firstname='$firstname', lastname='$lastname', gender='$gender', address='$address', contact='$contact', course='$course' WHERE student_id='$student_id'";
-            if ($conn->query($updateSql) === TRUE) {
-                echo "<p>Student information updated successfully.</p>";
+            // Check if the student exists in the database
+            $checkSql = "SELECT * FROM student WHERE student_no = '$student_no'";
+            $result = $conn->query($checkSql);
+
+            if ($result->num_rows > 0) {
+                // Update the student information in the database
+                $updateSql = "UPDATE student SET firstname='$firstname', lastname='$lastname', gender='$gender', address='$address', contact='$contact', program='$program' WHERE student_no='$student_no'";
+                if ($conn->query($updateSql) === TRUE) {
+                    echo "<p>Student information updated successfully.</p>";
+                } else {
+                    echo "<p>Error updating student information: " . $conn->error . "</p>";
+                }
             } else {
-                echo "<p>Error updating student information: " . $conn->error . "</p>";
+                // Insert the student information into the database
+                $insertSql = "INSERT INTO student (student_no, firstname, lastname, gender, address, contact, program) VALUES ('$student_no', '$firstname', '$lastname', '$gender', '$address', '$contact', '$program')";
+                if ($conn->query($insertSql) === TRUE) {
+                    echo "<p>New student information inserted successfully.</p>";
+                } else {
+                    echo "<p>Error inserting student information: " . $conn->error . "</p>";
+                }
             }
         }
         ?>
