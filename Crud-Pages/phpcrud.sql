@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2023 at 02:35 PM
+-- Generation Time: May 27, 2023 at 02:25 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -38,7 +38,8 @@ CREATE TABLE `assignment` (
 
 INSERT INTO `assignment` (`assignment_id`, `assignment_name`) VALUES
 (1, 'PHP CRUD'),
-(2, 'IAS Final Requirement');
+(2, 'IAS Final Requirement'),
+(3, 'Final Case Study');
 
 -- --------------------------------------------------------
 
@@ -58,7 +59,8 @@ CREATE TABLE `instructor` (
 
 INSERT INTO `instructor` (`instructor_id`, `firstname`, `lastname`) VALUES
 (1, 'Kristine', 'Martinez'),
-(2, 'Larry', 'Caduada Jr.');
+(2, 'Larry', 'Caduada Jr.'),
+(3, 'Larry', 'Caduada Jr.');
 
 -- --------------------------------------------------------
 
@@ -77,7 +79,8 @@ CREATE TABLE `status` (
 
 INSERT INTO `status` (`status_id`, `status_name`) VALUES
 (1, 'in progress'),
-(2, 'done');
+(2, 'done'),
+(3, 'done');
 
 -- --------------------------------------------------------
 
@@ -87,12 +90,13 @@ INSERT INTO `status` (`status_id`, `status_name`) VALUES
 
 CREATE TABLE `student` (
   `student_id` int(11) NOT NULL,
+  `student_no` int(11) NOT NULL,
   `firstname` varchar(45) NOT NULL,
   `lastname` varchar(45) NOT NULL,
   `gender` varchar(45) NOT NULL,
-  `address` varchar(45) NOT NULL,
+  `address` varchar(100) NOT NULL,
   `contact` int(11) NOT NULL,
-  `course` varchar(45) NOT NULL
+  `program` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -112,7 +116,22 @@ CREATE TABLE `subject` (
 
 INSERT INTO `subject` (`subject_id`, `subject_name`) VALUES
 (1, 'Application Development'),
-(2, 'Information Assurance and Security');
+(2, 'Information Assurance and Security'),
+(3, 'Information Assurance and Security');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `student_number` int(11) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -149,6 +168,12 @@ ALTER TABLE `subject`
   ADD PRIMARY KEY (`subject_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -156,25 +181,37 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `assignment`
 --
 ALTER TABLE `assignment`
-  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `instructor`
 --
 ALTER TABLE `instructor`
-  MODIFY `instructor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `instructor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
-  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `student`
+--
+ALTER TABLE `student`
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

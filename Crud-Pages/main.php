@@ -102,6 +102,10 @@ function viewAssignments() {
             text-align: center;
         }
 
+        label {
+            color: white;
+        }
+
         .assignment_name {
             position: right;
         }
