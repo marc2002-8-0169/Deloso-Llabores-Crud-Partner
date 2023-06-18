@@ -36,11 +36,6 @@ This table consist of the following contents:</p>
 
 ![Delete Assignment](https://github.com/marc2002-8-0169/Deloso-Llabores-Crud-Partner/blob/main/Delete.PNG)
 ---
-<p align="center"><strong>Assignment Management System</strong><br>Arnel Guevarra Llabores<br>Marc Andrew C. Deloso</p>
-
-
-
-
 
 <p align="center"><strong>Created by:</strong></p>
 <p align="center">Marc Andrew C. Deloso</p>
