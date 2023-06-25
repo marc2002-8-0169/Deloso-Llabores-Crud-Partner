@@ -39,15 +39,16 @@ def add(request):
         form = AuthenticationForm()
     return render(request, 'add.html', {'form': form})
 
-def delete(request):
+def delete(request, id):
     if request.method == 'POST':
         form = AuthenticationForm(request.POST)
         if form.is_valid():
-            form.save()
+            form.delete()  
             return redirect('delete')
     else:
         form = AuthenticationForm()
-    return render(request, 'delete.html', {'form': form}))
+    return render(request, 'delete.html', {'form': form})
+
 
 def studentupdate(request):
     if request.method == 'POST':
