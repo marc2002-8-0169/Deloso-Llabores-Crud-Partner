@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login Page</title>
+	{% load styles %}
+    <link rel="stylesheet" href="{ % styles 'login.css'}">
+</head>
+<body>
+	<!-- Login Form -->
+	<div class="login-container">
+		<h1>Login</h1>
+        <p>Input your login details.</p>
+		<form method="POST">
+			{% csrf_token %}
+			{{ login_form.as_p }}
+			<input type="text" placeholder="Username" id="username" name="username" required>
+			<input type="password" placeholder="Password" id="password" name="password" required>
+			<button type="submit">Login</button><br>
+            <label>Dont have an account yet?</label>
+            <a href="signup.html">Signup</a>
+		</form>
+	</div>
+</body>
+</html>

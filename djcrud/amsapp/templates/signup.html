@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Signup Page</title>
+	{% load styles %}
+    <link rel="stylesheet" href="{ % styles 'signup.css'}">
+</head>
+<body>
+	<!-- Sign Up Form -->
+	<div class="signup-container">
+		<h1>Sign Up</h1>
+        <p>Fill out the form bellow.</p>
+		<form method="POST">
+            {% csrf_token %}
+      		{{ form.as_p }}
+			<input type="text" placeholder="id number: 20000000" id="student_number" name="student_number" required>
+			<input type="text" placeholder="Username" id="username" name="username" required>
+			<input type="password" placeholder="Password" id="password" name="password" required>
+			<button type="submit">Sign Up</button><br>
+            <label>Already have an account?</label>
+            <a href="login.html">Login</a>
+		</form>
+	</div>
+</body>
+</html>

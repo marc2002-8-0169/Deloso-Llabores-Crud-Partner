@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+    
     /**
      * This is to allow the program to fillout the information on student table
      * whenever a new data is created.
@@ -18,4 +19,5 @@ class Student extends Model
     protected $fillable = [
        'student_id','id_number','firstname', 'lastname', 'gender', 'address', 'contact', 'course'
     ];
+
 }
