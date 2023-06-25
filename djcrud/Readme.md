@@ -1,4 +1,4 @@
-# This is the Laravel App of Assignment Management System
+# This is the Django App of Assignment Management System
 
 <p>This program lets student manage their assignments by inserting it in the tables that this program provides</p>
 
