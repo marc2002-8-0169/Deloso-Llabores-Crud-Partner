@@ -12,24 +12,25 @@
     <a href="../main"><button>Go to Main Page</button></a><br><br>
 
     <form method="POST">
-    @csrf
+    {% csrf_token %}
+	{{ form.as_p }}
         <label for="assignment_id">Assignment No:</label>
-        <input type="number" name="assignment_id" value="{{ $data->assignment_id }}" required><br><br>
+        <input type="number" name="assignment_id" value="{{ main.assignment_id }}" required><br><br>
 
         <label for="assignment_name">Assignment Name:</label>
-        <input type="text" name="assignment_name" value=" {{ $data->assignment_name }}" required><br><br>
+        <input type="text" name="assignment_name" value=" {{ main.assignment_name }}" required><br><br>
 
         <label for="subject_name">Subject:</label>
-        <input type="text" name="subject_name" value=" {{ $data->subject_name }}" required><br><br>
+        <input type="text" name="subject_name" value=" {{ main.subject_name }}" required><br><br>
 
         <label for="firstname">Instructor First Name:</label>
-        <input type="text" name="firstname" value="{{ $data->firstname}}" required><br><br>
+        <input type="text" name="firstname" value="{{ main.firstname}}" required><br><br>
 
         <label for="lastname">Instructor Last Name:</label>
-        <input type="text" name="lastname" value="{{ $data->lastname }}" required><br><br>
+        <input type="text" name="lastname" value="{{ main.lastname }}" required><br><br>
 
         <label for="status_name">Status:</label>
-        <input type="text" name="" value="{{ $data->status_name }}" required><br><br>
+        <input type="text" name="" value="{{ main.status_name }}" required><br><br>
 
         <input type="submit" name="update_assignment" value="Update Assignment">
     </form><br><br>

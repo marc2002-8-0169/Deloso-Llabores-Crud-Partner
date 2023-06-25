@@ -12,19 +12,19 @@
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <label for="assignment_name">Assignment Name:</label>
+        <label for="{{ models.assignment_name }}">Assignment Name:</label>
         <input type="text" name="assignment_name" required><br><br>
 
-        <label for="subject_name">Subject:</label>
+        <label for="{{ models.subject_name }}">Subject:</label>
         <input type="text" name="subject_name" required><br><br>
 
-        <label for="instructor_first_name">Instructor:</label>
+        <label for="{{ models.instructor_first_name }}">Instructor:</label>
         <div class="name-field">
             <input type="text" name="instructor_first_name" placeholder="First name" required>
             <input type="text" name="instructor_last_name" placeholder="Last name" required>
         </div><br><br>
 
-        <label for="status_name">Status:</label>
+        <label for="{{ models.status_name }}">Status:</label>
         <input type="text" name="status_name" required><br><br>
 
         <input type="submit" name="add_assignment" value="Add Assignment">

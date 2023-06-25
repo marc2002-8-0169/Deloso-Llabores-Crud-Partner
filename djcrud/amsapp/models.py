@@ -19,15 +19,15 @@ class Instructor(models.Model):
         managed = True
         db_table = 'instructor'
 
-class Student(models.Model):
+class Students(models.Model):
     student_id = models.IntegerField(primary_key=True)
     id_number = models.IntegerField(blank=True, null=True)
     firstname = models.CharField(max_length=50)
     lastname = models.CharField(max_length=50)
     gender = models.CharField(max_length=50)
     address = models.CharField(max_length=200)
-    contact = models.IntegerField(max_length=200)
-    course = models.IntegerField(blank=True, null=True)
+    contact = models.IntegerField(blank=True, null=True)
+    course = models.CharField(max_length=50)
 
     class Meta:
         managed = True
@@ -39,4 +39,25 @@ class Subject(models.Model):
     
     class Meta:
         managed = True
-        db_table = 'assignment'
+        db_table = 'subject'
+
+class User(models.Model):
+    id = models.IntegerField(primary_key=True)
+    student_number = models.CharField(max_length=50)
+    username = models.CharField(max_length=50)
+    password = models.CharField(max_length=50)
+
+    class Meta:
+        managed = True
+        db_table = 'subject'
+
+class Status(models.Model):
+    status_id = models.IntegerField(primary_key=True)
+    status_name = models.CharField(max_length=50)
+    
+    class Meta:
+        managed = True
+        db_table = 'subject'
+
+
+
