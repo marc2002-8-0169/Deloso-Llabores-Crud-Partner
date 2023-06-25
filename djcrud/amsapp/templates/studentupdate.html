@@ -9,9 +9,9 @@
 
         <!-- Update Student Information Form -->
         <h2>Update Student Information</h2>
-        <a href="home"><button>Go to Main Page</button></a>
-        <a href="studentinfo"><button>Go to Student Information</button></a>
-        <form method="POST" action="{{ route('studentupdate') }}">
+        <a href="../main"><button>Go to Main Page</button></a>
+        <a href="../studentinfo"><button>Go to Student Information</button></a>
+        <form method="POST">
         @csrf
             <label for="student_id">Student ID:</label>
             <input type="text" name="student_id" value="{{ $records->student_id }}" required>

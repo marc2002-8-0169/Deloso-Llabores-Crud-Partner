@@ -9,9 +9,9 @@
     
     <!-- Update Assignment Form -->
     <h2>Update Assignment</h2>
-    <a href="home"><button>Go to Main Page</button></a><br><br>
+    <a href="../main"><button>Go to Main Page</button></a><br><br>
 
-    <form method="POST" action="{{ route('update') }}">
+    <form method="POST">
     @csrf
         <label for="assignment_id">Assignment No:</label>
         <input type="number" name="assignment_id" value="{{ $data->assignment_id }}" required><br><br>

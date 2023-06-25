@@ -9,7 +9,7 @@
     <!-- Add Assignment Form -->
     <h2>Add Assignment</h2>
     
-    <form action="{{ route('add') }}" method="POST">
+    <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <label for="assignment_name">Assignment Name:</label>
@@ -29,6 +29,6 @@
 
         <input type="submit" name="add_assignment" value="Add Assignment">
     </form><br><br>
-    <a href="home"><button>Go to Main Page</button></a>
+    <a href="../main"><button>Go to Main Page</button></a>
 </body>
 </html>

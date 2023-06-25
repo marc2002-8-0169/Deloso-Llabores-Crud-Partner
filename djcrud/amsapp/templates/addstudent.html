@@ -9,8 +9,8 @@
 
         <!-- Update Student Information Form -->
         <h2>Add Student Information</h2>
-        <a href="home.html"><button>Go to Main Page</button></a>
-        <a href="studentinfo.html"><button>Go to Student Information</button></a>
+        <a href="../main"><button>Go to Main Page</button></a>
+        <a href="../studentinfo"><button>Go to Student Information</button></a>
         <form method="POST">
             {% csrf_token %}
 			{{ form.as_p }}
