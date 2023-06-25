@@ -3,7 +3,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 
 def main(request):
-    return render(request, 'main.html')
+    sqlstatement= "SELECT assignment.assignment_id AS 'Assignment no.', assignment.assignment_name AS 'Assignment', subject.subject_name AS 'Subject',CONCAT(instructor.firstname, ' ', instructor.lastname) AS 'Instructor', status.status_name AS 'Status' FROM assignment INNER JOIN subject ON assignment.assignment_id = subject.subject_id INNER JOIN instructor ON assignment.assignment_id = instructor.instructor_id INNER JOIN status ON assignment.assignment_id = status.status_id"
+    joined_data = sqlstatement.objects.all()
+    return render(request, 'amsapp/main.html', {'data': joined_data })
 
 def signup(request):
     if request.method == 'POST':
@@ -38,6 +40,7 @@ def update(request):
     return render(request, 'update.html')
 
 def studentinfo(request):
+    
     return render(request, 'studentinfo.html')
 
 def addstudent(request):
