@@ -21,17 +21,17 @@ This table consist of the following contents:</p>
 ![Student Information](https://github.com/marc2002-8-0169/Deloso-Llabores-Crud-Partner/blob/main/image.png) 
 
 
-## Forms
-### Add Assignment/Student Form
+## Assignment Forms
+### Add Assignment Form
 <p>This form can be use by a user to add a new assignment with the specific information to be inputed, that they would want to manage or keep on track.</p>
 
 ![Add Assignment](https://github.com/marc2002-8-0169/Deloso-Llabores-Crud-Partner/blob/main/add-assignment.PNG) 
 
-### Update Assigment/Student Form
+### Update Assigment Form
 <p>This form can be use for updates that an assignment needs for its informations.</p>
 
 ![Update Assignment](https://github.com/marc2002-8-0169/Deloso-Llabores-Crud-Partner/blob/main/update%20form.PNG)
-### Delete Assignment/Student Form
+### Delete Assignment Form
 <p>This form can be use to delete an assigment using the assignments ID.</p>
 
 ![Delete Assignment](https://github.com/marc2002-8-0169/Deloso-Llabores-Crud-Partner/blob/main/Delete.PNG)
