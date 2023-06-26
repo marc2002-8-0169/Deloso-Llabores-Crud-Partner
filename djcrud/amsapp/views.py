@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import Students
+from django.contrib.auth.models import Assignment
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 
 
 def main(request):
-    sqlstatement= "SELECT assignment.assignment_id AS 'Assignment no.', assignment.assignment_name AS 'Assignment', subject.subject_name AS 'Subject',CONCAT(instructor.firstname, ' ', instructor.lastname) AS 'Instructor', status.status_name AS 'Status' FROM assignment INNER JOIN subject ON assignment.assignment_id = subject.subject_id INNER JOIN instructor ON assignment.assignment_id = instructor.instructor_id INNER JOIN status ON assignment.assignment_id = status.status_id"
-    joined_data = sqlstatement.objects.all()
+    joined_data = Assignment.objects.all()
     return render(request, 'amsapp/main.html', {'data': joined_data })
 
 def signup(request):

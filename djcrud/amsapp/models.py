@@ -5,6 +5,11 @@ from django.db import models
 class Assignment(models.Model):
     assignment_id = models.IntegerField(primary_key=True)
     assignment_name = models.CharField(max_length=50)
+    instructor = models.ForeignKey(Instructor)
+    status = models.ForeignKey(Status)
+    user = models.ForeignKey(User)
+    subject = models.ForeignKey(Subject)
+
     
     class Meta:
         managed = True
